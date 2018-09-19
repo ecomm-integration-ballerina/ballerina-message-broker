@@ -1,0 +1,43 @@
+---
+apiVersion: "extensions/v1beta1"
+kind: "Deployment"
+metadata:
+  annotations: {}
+  finalizers: []
+  labels:
+    app: "b7a-mb"
+  name: "b7a-mb-deployment"
+  namespace: "default"
+  ownerReferences: []
+spec:
+  replicas: 1
+  template:
+    metadata:
+      annotations: {}
+      finalizers: []
+      labels:
+        app: "b7a-mb"
+      ownerReferences: []
+    spec:
+      containers:
+      - args: []
+        command: []
+        env: []
+        envFrom: []
+        image: "rajkumar/ballerina-message-broker:0.970.5"
+        imagePullPolicy: "IfNotPresent"
+        name: "b7a-mb-deployment"
+        ports:
+        - containerPort: 5672
+          name: amqp
+        - containerPort: 8672  
+          name: amqps        
+        - containerPort: 9000
+          name: http         
+        volumeMounts: []
+      hostAliases: []
+      imagePullSecrets: []
+      initContainers: []
+      nodeSelector: {}
+      tolerations: []
+      volumes: []
