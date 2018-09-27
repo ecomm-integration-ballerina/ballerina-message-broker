@@ -24,8 +24,8 @@ spec:
         command: []
         env: []
         envFrom: []
-        image: "rajkumar/ballerina-message-broker:master"
-        imagePullPolicy: "IfNotPresent"
+        image: "rajkumar/ballerina-message-broker:0.970.5"
+        imagePullPolicy: "Always"
         name: "b7a-mb-deployment"
         ports:
         - containerPort: 5672

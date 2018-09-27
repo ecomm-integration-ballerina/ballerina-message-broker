@@ -1,0 +1,31 @@
+version: '1.0'
+steps:
+  build_image:
+    title: Building Docker Image
+    type: build
+    image_name: rajkumar/ballerina-message-broker
+    working_directory: ./
+    tag: 0.970.5
+    dockerfile: docker/Dockerfile
+
+  push_to_registry:
+    title: Pushing to Docker Registry
+    type: push
+    candidate: '${{build_image}}'
+    tag: 0.970.5
+    registry: dockerhub
+
+  deploy_to_k8s:
+    title: Running Deploy Script
+    type: deploy
+    kind: kubernetes
+    cluster: ecomm-integration-ballerina@ecomm-integration-ballerina
+    namespace: default
+    when:
+      branch:
+        only:
+          - master
+    file_path: ./kubernetes/b7a_mb_deployment.yaml
+stages: []
+
+
